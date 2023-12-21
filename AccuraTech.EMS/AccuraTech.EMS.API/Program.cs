@@ -6,6 +6,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<DepartmentService>();
 builder.Services.AddSingleton<EmployeeService>();
 
 var app = builder.Build();
