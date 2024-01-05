@@ -2,12 +2,30 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
+var AllowAccessToGUI = "AllowAccessToGUI";
+
+builder.Services.AddCors();
+
+builder.Services.AddCors(options => {
+	options.AddPolicy(name: AllowAccessToGUI,
+		policy => {
+			policy.WithOrigins("*")
+			.AllowAnyHeader()
+			.AllowAnyMethod();
+		}
+	);
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<DepartmentService>();
 builder.Services.AddSingleton<EmployeeService>();
+
+builder.Services.AddControllers().AddJsonOptions(options => {
+	options.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
 
 var app = builder.Build();
 
@@ -20,6 +38,12 @@ if (app.Environment.IsDevelopment()) {
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(x => x
+				.AllowAnyMethod()
+				.AllowAnyHeader()
+				.SetIsOriginAllowed(origin => true) // allow any origin
+				.AllowCredentials()); // allow credentials
 
 app.MapControllers();
 

@@ -30,11 +30,13 @@ public class EmployeeService {
 			if (dept == null)
 				throw new Exception($"No Such Department Found: {data.Department}");
 
+			data.DepartmentName = dept.Name;
+
 			database.Employees.Add(data);
 			await database.SaveChangesAsync();
 
 			return await LastInserted();
-		} catch (Exception) {
+		} catch (Exception ex) {
 			throw;
 		}
 	}
@@ -60,7 +62,7 @@ public class EmployeeService {
 			await database.SaveChangesAsync();
 
 			return data;
-		} catch (Exception) {
+		} catch (Exception ex) {
 			throw;
 		}
 	}

@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AccuraTech.EMS.API.Controllers;
 
-[Route("api/[controller]")]
+[ApiController]
+[Route("api/v1/[controller]")]
+[Produces("application/json")]
 public class EmployeeController : Controller {
 	private EmployeeService service;
 

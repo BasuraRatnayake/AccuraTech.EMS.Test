@@ -27,7 +27,7 @@ public class DepartmentService {
 			await database.SaveChangesAsync();
 
 			return await LastInserted();
-		} catch (Exception) {
+		} catch (Exception ex) {
 			throw;
 		}
 	}

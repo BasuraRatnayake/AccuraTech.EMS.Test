@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AccuraTech.EMS.API.Controllers;
 
-[Route("api/[controller]")]
+[ApiController]
+[Route("api/v1/[controller]")]
+[Produces("application/json")]
 public class DepartmentController : Controller {
 	private DepartmentService service;
 
@@ -58,4 +60,3 @@ public class DepartmentController : Controller {
 		}
 	}
 }
-

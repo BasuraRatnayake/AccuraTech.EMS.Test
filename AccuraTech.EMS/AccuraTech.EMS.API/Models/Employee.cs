@@ -14,11 +14,12 @@ public class Employee {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 	public int? Id { get; set; }
-	public string FirstName { get; set; }
-	public string LastName { get; set; }
-	public EmployeeGender Gender { get; set; }
-	public DateOnly DateOfBirth { get; set; }
-	public string Address { get; set; }
-	public decimal Salary { get; set; }
-	public int Department { get; set; }
+	public required string FirstName { get; set; }
+	public required string LastName { get; set; }
+	public required EmployeeGender Gender { get; set; }
+	public required DateOnly DateOfBirth { get; set; }
+	public required string Address { get; set; }
+	public required decimal Salary { get; set; }
+	public required int Department { get; set; }
+	public string? DepartmentName { get; set; }
 }
